@@ -1,0 +1,35 @@
+
+[GFG Link]( https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1)
+def printFirstNegativeInteger( arr, n, k):
+    ans=[]
+    mins=[]
+    l=0
+    i=0
+    f=0
+    m=0
+    while f<k:
+        if(arr[f]<0):
+            mins.append(arr[f])
+            l+=1
+        f+=1
+    f=k
+    while f<n:
+        if l<=0:
+            ans.append(0)
+        else:
+            ans.append(mins[0])
+        
+        if arr[f]<0:
+            mins.append(arr[f])
+            l+=1
+        if(arr[i]<0):
+            mins.pop(0)
+            l-=1
+        i+=1
+        f+=1
+    if l<=0:
+            ans.append(0)
+    else:
+        ans.append(mins[0])
+    return ans
+       
